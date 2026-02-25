@@ -151,13 +151,21 @@
     ══════════════════════════════════════════ */
     #hero {
       min-height: 100vh;
-      background: var(--white);
+      background: var(--cream);
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 7rem 2rem 5rem;
       position: relative;
       overflow: hidden;
+      /* Subtle diagonal cream stripes */
+      background-image: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 40px,
+        rgba(0,0,0,0.018) 40px,
+        rgba(0,0,0,0.018) 80px
+      );
     }
 
     /* Zigzag top border */
@@ -195,83 +203,99 @@
     .hero-pole-left { left: 0; border-left: none; }
     .hero-pole-right { right: 0; border-right: none; border-left: 2px solid rgba(0,0,0,0.12); }
 
-    /* Starburst decorations */
+    /* Starburst decorations - bigger and bolder */
     .star-deco {
       position: absolute;
-      opacity: 0.12;
       pointer-events: none;
     }
 
-    .star-deco-1 { top: 12%; left: 8%; width: 120px; }
-    .star-deco-2 { bottom: 15%; right: 7%; width: 90px; }
-    .star-deco-3 { top: 55%; left: 5%; width: 55px; opacity: 0.08; }
+    .star-deco-1 { top: 10%; left: 6%; width: 150px; opacity: 0.08; }
+    .star-deco-2 { bottom: 12%; right: 5%; width: 120px; opacity: 0.1; }
+    .star-deco-3 { top: 60%; left: 3%; width: 65px; opacity: 0.06; }
 
     .hero-inner {
-      max-width: 1000px;
+      max-width: 800px;
       width: 100%;
       position: relative;
       z-index: 2;
-      display: flex;
-      align-items: center;
-      gap: 3rem;
+      text-align: center;
     }
 
-    .hero-logo-side {
-      flex: 0 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    /* ── Retro marquee sign ── */
+    .hero-sign {
+      background: var(--black);
+      border: 4px solid var(--black);
+      border-radius: 12px;
+      padding: 2.5rem 2.5rem 2rem;
+      position: relative;
+      box-shadow:
+        0 8px 0 rgba(0,0,0,0.15),
+        0 20px 60px rgba(0,0,0,0.2),
+        inset 0 0 80px rgba(255,255,255,0.03);
     }
 
-    .hero-logo-img {
-      width: min(280px, 35vw);
-      height: auto;
-      filter: drop-shadow(0 6px 20px rgba(0,0,0,0.18));
-      animation: logoFloat 4s ease-in-out infinite;
+    /* Marquee light dots around the border */
+    .hero-sign::before {
+      content: '';
+      position: absolute;
+      inset: 6px;
+      border: 2px dashed var(--yellow);
+      border-radius: 8px;
+      opacity: 0.5;
+      animation: marqueeGlow 2s ease-in-out infinite alternate;
     }
 
-    @keyframes logoFloat {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
-    }
-
-    .hero-content-side {
-      flex: 1;
-      text-align: left;
+    @keyframes marqueeGlow {
+      0% { opacity: 0.3; }
+      100% { opacity: 0.7; }
     }
 
     .hero-eyebrow {
       font-family: var(--script);
       font-size: 1.4rem;
-      color: var(--blue);
-      margin-bottom: 0.5rem;
+      color: var(--yellow);
+      margin-bottom: 0.3rem;
     }
 
     .hero-title {
       font-family: var(--display);
-      font-size: clamp(5rem, 15vw, 9rem);
-      color: var(--black);
+      font-size: clamp(4.5rem, 14vw, 8rem);
+      color: var(--white);
       line-height: 0.92;
-      letter-spacing: 0.02em;
-      margin-bottom: 0.4rem;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.2rem;
+      text-shadow: 0 0 30px rgba(217,66,53,0.3);
     }
 
     .hero-title .red { color: var(--red); }
 
     .hero-sub {
       font-family: var(--script);
-      font-size: clamp(1.4rem, 3.5vw, 2rem);
-      color: var(--red);
-      margin-bottom: 1.25rem;
+      font-size: clamp(1.3rem, 3vw, 1.8rem);
+      color: var(--blue);
+      margin-bottom: 0.3rem;
+      opacity: 0.9;
+    }
+
+    .hero-divider {
+      width: 60%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--yellow), transparent);
+      margin: 0.8rem auto;
     }
 
     .hero-location {
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       font-weight: 600;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--gray);
-      margin-bottom: 1.5rem;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 0;
+    }
+
+    /* ── Below the sign ── */
+    .hero-below {
+      margin-top: 2rem;
     }
 
     .hero-rating {
@@ -286,7 +310,7 @@
       font-family: var(--display);
       font-size: 1.1rem;
       letter-spacing: 0.06em;
-      margin-bottom: 2.5rem;
+      margin-bottom: 1.5rem;
     }
 
     .hero-rating .stars-txt { color: var(--red); font-size: 1.2rem; letter-spacing: 0.05em; }
@@ -294,6 +318,7 @@
     .hero-actions {
       display: flex;
       gap: 1rem;
+      justify-content: center;
       flex-wrap: wrap;
     }
 
@@ -912,18 +937,13 @@
 
       section { padding: 3.5rem 1.25rem; }
 
-      #hero { padding: 6rem 1.25rem 3.5rem; }
+      #hero { padding: 5.5rem 1rem 3rem; }
 
-      .hero-inner {
-        flex-direction: column;
-        text-align: center;
-      }
+      .hero-sign { padding: 2rem 1.25rem 1.5rem; }
 
-      .hero-content-side { text-align: center; }
+      .hero-title { font-size: clamp(3.5rem, 16vw, 5.5rem); }
 
-      .hero-actions { justify-content: center; }
-
-      .hero-logo-img { width: min(220px, 55vw); }
+      .hero-actions { flex-direction: column; align-items: center; }
 
       .nav-logo-img { height: 36px; }
 
@@ -941,7 +961,8 @@
     }
 
     @media (max-width: 480px) {
-      .hero-title { font-size: clamp(4rem, 18vw, 5.5rem); }
+      .hero-title { font-size: clamp(3rem, 16vw, 4.5rem); }
+      .hero-sign { padding: 1.5rem 1rem 1.25rem; }
       .sign-title { font-size: 2.4rem; }
     }
   </style>
@@ -1043,22 +1064,21 @@
   </svg>
 
   <div class="hero-inner">
-    <div class="hero-logo-side">
-      <img src="logo.png" alt="Heyday Barbershop" class="hero-logo-img" />
-    </div>
-    <div class="hero-content-side">
+    <div class="hero-sign">
       <p class="hero-eyebrow">Seminole Heights, Tampa FL</p>
       <h1 class="hero-title">
         <span class="red">HEYDAY</span><br />BARBERSHOP
       </h1>
+      <div class="hero-divider" aria-hidden="true"></div>
       <p class="hero-sub">Your neighborhood cut shop.</p>
+      <div class="hero-divider" aria-hidden="true"></div>
       <p class="hero-location">5115 N Florida Ave &mdash; Tampa, FL 33603</p>
+    </div>
 
-      <div style="margin-bottom: 2.5rem;">
-        <div class="hero-rating">
-          <span class="stars-txt">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-          <span>5.0 &mdash; 651+ Reviews on Booksy</span>
-        </div>
+    <div class="hero-below">
+      <div class="hero-rating">
+        <span class="stars-txt">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <span>5.0 &mdash; 651+ Reviews on Booksy</span>
       </div>
 
       <div class="hero-actions">
