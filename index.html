@@ -234,6 +234,17 @@
         inset 0 0 80px rgba(255,255,255,0.03);
     }
 
+    .hero-sign-logo {
+      position: absolute;
+      top: -32px;
+      left: -20px;
+      width: 100px;
+      height: auto;
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.35));
+      transform: rotate(-8deg);
+      z-index: 3;
+    }
+
     /* Marquee light dots around the border */
     .hero-sign::before {
       content: '';
@@ -940,6 +951,7 @@
       #hero { padding: 5.5rem 1rem 3rem; }
 
       .hero-sign { padding: 2rem 1.25rem 1.5rem; }
+      .hero-sign-logo { width: 75px; top: -24px; left: -12px; }
 
       .hero-title { font-size: clamp(3.5rem, 16vw, 5.5rem); }
 
@@ -1027,8 +1039,7 @@
 ══════════════════════════════════════════ -->
 <nav>
   <a class="nav-logo" href="#hero">
-    <img src="logo.png" alt="" class="nav-logo-img" />
-    <span class="nav-logo-text">HEYDAY<span class="script-accent">barbershop</span></span>
+    <img src="logo.png" alt="Heyday Barbershop" class="nav-logo-img" />
   </a>
   <button class="nav-toggle" aria-label="Toggle menu" onclick="toggleNav()">
     <span></span><span></span><span></span>
@@ -1065,6 +1076,7 @@
 
   <div class="hero-inner">
     <div class="hero-sign">
+      <img src="logo.png" alt="" class="hero-sign-logo" />
       <p class="hero-eyebrow">Seminole Heights, Tampa FL</p>
       <h1 class="hero-title">
         <span class="red">HEYDAY</span><br />BARBERSHOP
