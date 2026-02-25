@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Heyday Barbershop — Seminole Heights, Tampa. Classic cuts, great banter. 5 stars on Booksy. Book online today." />
+  <title>Heyday Barbershop | Seminole Heights, Tampa</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── Reset & Base ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red:     #9b1c1c;
+      --red-lt:  #c62828;
+      --black:   #0d0d0d;
+      --charcoal:#1c1c1c;
+      --warm:    #f5f0eb;
+      --white:   #ffffff;
+      --gray:    #6b6b6b;
+      --border:  #e2ddd8;
+      --serif:   'Playfair Display', Georgia, serif;
+      --sans:    'Inter', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--white);
+      color: var(--black);
+      line-height: 1.6;
+    }
+
+    /* ─── Nav ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(13,13,13,0.96);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      height: 64px;
+    }
+
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.03em;
+    }
+
+    .nav-logo span { color: var(--red-lt); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--white); }
+
+    .nav-cta {
+      background: var(--red);
+      color: var(--white) !important;
+      padding: 0.45rem 1.1rem;
+      border-radius: 4px;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover { background: var(--red-lt) !important; color: var(--white) !important; }
+
+    /* ─── Hero ─── */
+    #hero {
+      min-height: 100vh;
+      background: var(--black);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 6rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Barberpole stripe accent */
+    #hero::before {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 6px;
+      height: 100%;
+      background: repeating-linear-gradient(
+        180deg,
+        var(--red-lt) 0px,
+        var(--red-lt) 24px,
+        var(--white) 24px,
+        var(--white) 48px,
+        #1565c0 48px,
+        #1565c0 72px
+      );
+      opacity: 0.7;
+    }
+
+    #hero::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 6px;
+      height: 100%;
+      background: repeating-linear-gradient(
+        180deg,
+        var(--red-lt) 0px,
+        var(--red-lt) 24px,
+        var(--white) 24px,
+        var(--white) 48px,
+        #1565c0 48px,
+        #1565c0 72px
+      );
+      opacity: 0.7;
+    }
+
+    .hero-inner { max-width: 720px; }
+
+    .hero-eyebrow {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--red-lt);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-title {
+      font-family: var(--serif);
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.05;
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.01em;
+    }
+
+    .hero-title span { color: var(--red-lt); }
+
+    .hero-tagline {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 0.75rem;
+      font-weight: 400;
+    }
+
+    .hero-location {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-stars {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 2.5rem;
+      color: rgba(255,255,255,0.5);
+      font-size: 0.875rem;
+    }
+
+    .stars { color: #f5c518; font-size: 1.1rem; letter-spacing: 0.05em; }
+
+    .btn {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--red);
+      color: var(--white);
+      border: 2px solid var(--red);
+    }
+
+    .btn-primary:hover {
+      background: var(--red-lt);
+      border-color: var(--red-lt);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(155,28,28,0.4);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid rgba(255,255,255,0.3);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--white);
+      background: rgba(255,255,255,0.06);
+    }
+
+    .hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    /* ─── Section base ─── */
+    section { padding: 6rem 2rem; }
+
+    .container { max-width: 1000px; margin: 0 auto; }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ─── Divider ─── */
+    .divider {
+      width: 48px;
+      height: 3px;
+      background: var(--red);
+      margin-bottom: 1.5rem;
+    }
+
+    /* ─── About ─── */
+    #about { background: var(--warm); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-text p {
+      color: #444;
+      font-size: 1.05rem;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    .about-text p:last-child { margin-bottom: 0; }
+
+    .about-badges {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .badge-card {
+      background: var(--white);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      border-left: 4px solid var(--red);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+
+    .badge-card h4 {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      margin-bottom: 0.25rem;
+      color: var(--black);
+    }
+
+    .badge-card p {
+      font-size: 0.875rem;
+      color: var(--gray);
+      margin: 0;
+    }
+
+    /* ─── Services ─── */
+    #services { background: var(--white); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .service-card {
+      background: var(--charcoal);
+      color: var(--white);
+      border-radius: 8px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--red);
+      transform: scaleX(0);
+      transition: transform 0.2s;
+    }
+
+    .service-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.2); }
+    .service-card:hover::before { transform: scaleX(1); }
+
+    .service-icon {
+      font-size: 2.25rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .service-card h3 {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .service-card p {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.6;
+    }
+
+    /* ─── Location ─── */
+    #location { background: var(--warm); }
+
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+      margin-top: 3rem;
+    }
+
+    .location-info p {
+      font-size: 1rem;
+      color: #444;
+      line-height: 1.8;
+      margin-bottom: 0.5rem;
+    }
+
+    .location-info strong { color: var(--black); }
+
+    .location-map {
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+    }
+
+    .location-map iframe {
+      display: block;
+      width: 100%;
+      height: 320px;
+      border: 0;
+    }
+
+    /* ─── Book CTA ─── */
+    #book {
+      background: var(--black);
+      text-align: center;
+      padding: 7rem 2rem;
+    }
+
+    #book .section-title { color: var(--white); margin-bottom: 0.75rem; }
+    #book .section-title span { color: var(--red-lt); }
+
+    #book p {
+      color: rgba(255,255,255,0.55);
+      font-size: 1.1rem;
+      max-width: 480px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .book-stars {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      color: rgba(255,255,255,0.45);
+      font-size: 0.875rem;
+      margin-bottom: 2.5rem;
+    }
+
+    /* ─── Footer ─── */
+    footer {
+      background: var(--charcoal);
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      padding: 2.5rem 2rem;
+      font-size: 0.875rem;
+    }
+
+    footer a {
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    footer a:hover { color: var(--white); }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-ig {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    /* ─── Hamburger ─── */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 768px) {
+      nav { padding: 0 1.25rem; }
+
+      .nav-links {
+        display: none;
+        position: fixed;
+        top: 64px; left: 0; right: 0;
+        background: rgba(13,13,13,0.98);
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+        padding: 1rem 0 2rem;
+      }
+
+      .nav-links.open { display: flex; }
+      .nav-links li { width: 100%; text-align: center; }
+      .nav-links a { display: block; padding: 0.85rem 1rem; font-size: 1rem; }
+      .nav-cta { margin: 0.5rem 2rem 0; display: block; border-radius: 4px; background: var(--red); }
+
+      .nav-toggle { display: flex; }
+
+      .about-grid,
+      .location-grid { grid-template-columns: 1fr; gap: 2rem; }
+
+      section { padding: 4rem 1.25rem; }
+      #book { padding: 5rem 1.25rem; }
+
+      .hero-actions { flex-direction: column; align-items: center; }
+      .btn { width: 100%; max-width: 280px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── NAV ─── -->
+  <nav>
+    <a class="nav-logo" href="#hero">Heyday<span>.</span></a>
+    <button class="nav-toggle" aria-label="Toggle menu" onclick="toggleNav()">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#location">Location</a></li>
+      <li><a href="https://booksy.com/en-us/1574076_heyday-barbershop_barber-shop_15761_tampa" target="_blank" rel="noopener" class="nav-cta">Book Now</a></li>
+    </ul>
+  </nav>
+
+  <!-- ─── HERO ─── -->
+  <section id="hero">
+    <div class="hero-inner">
+      <p class="hero-eyebrow">Seminole Heights · Tampa, FL</p>
+      <h1 class="hero-title">Heyday<br /><span>Barbershop</span></h1>
+      <p class="hero-tagline">Classic cuts. Great banter. No corporate nonsense.</p>
+      <p class="hero-location">5115 N Florida Ave · Tampa, FL 33603</p>
+      <div class="hero-stars">
+        <span class="stars">★★★★★</span>
+        <span>5.0 — 651+ reviews on Booksy</span>
+      </div>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://booksy.com/en-us/1574076_heyday-barbershop_barber-shop_15761_tampa" target="_blank" rel="noopener">Book Your Cut</a>
+        <a class="btn btn-outline" href="#about">Our Story</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── ABOUT ─── -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-text">
+          <p class="section-label">The Shop</p>
+          <h2 class="section-title">Your Neighborhood Barbershop</h2>
+          <div class="divider"></div>
+          <p>Heyday is Seminole Heights' go-to barbershop — a proper neighborhood spot where the conversation is as good as the cuts. No stuffy atmosphere, no attitude. Just two skilled barbers who genuinely care about their craft.</p>
+          <p>Walk in or book ahead. Either way, you're leaving looking sharp.</p>
+        </div>
+        <div class="about-badges">
+          <div class="badge-card">
+            <h4>Captain D</h4>
+            <p>Derek — precision fades, classic cuts, and the kind of barbershop talk that keeps you coming back.</p>
+          </div>
+          <div class="badge-card">
+            <h4>Meatloaf</h4>
+            <p>Derek — old school skills with a modern edge. Fades, tapers, and straight razor shaves done right.</p>
+          </div>
+          <div class="badge-card">
+            <h4>★★★★★ 5.0 on Booksy</h4>
+            <p>651+ reviews. The neighborhood doesn't lie.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SERVICES ─── -->
+  <section id="services">
+    <div class="container">
+      <p class="section-label">What We Do</p>
+      <h2 class="section-title">Services</h2>
+      <div class="divider"></div>
+      <div class="services-grid">
+        <div class="service-card">
+          <span class="service-icon">✂️</span>
+          <h3>Haircut</h3>
+          <p>Classic cuts tailored to your style. Clean lines, proper shape, every time.</p>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">💈</span>
+          <h3>Fade</h3>
+          <p>Low, mid, high — smooth gradients that look fresh for weeks.</p>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">🪒</span>
+          <h3>Beard Trim</h3>
+          <p>Shaped, edged, and cleaned up. Your beard deserves the same attention as your hair.</p>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">🔪</span>
+          <h3>Straight Razor Shave</h3>
+          <p>Old-school luxury. Hot towel, straight razor, smooth finish. A proper shave.</p>
+        </div>
+      </div>
+      <p style="text-align:center; margin-top:2.5rem; color:var(--gray); font-size:0.9rem;">
+        For current pricing &amp; full service menu, <a href="https://booksy.com/en-us/1574076_heyday-barbershop_barber-shop_15761_tampa" target="_blank" rel="noopener" style="color:var(--red); text-decoration:none; font-weight:600;">check Booksy →</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ─── LOCATION ─── -->
+  <section id="location">
+    <div class="container">
+      <p class="section-label">Find Us</p>
+      <h2 class="section-title">Location &amp; Hours</h2>
+      <div class="divider"></div>
+      <div class="location-grid">
+        <div class="location-info">
+          <p><strong>📍 Address</strong><br />5115 N Florida Ave<br />Tampa, FL 33603<br />Seminole Heights</p>
+          <br />
+          <p><strong>🕐 Hours</strong><br />
+            Check <a href="https://booksy.com/en-us/1574076_heyday-barbershop_barber-shop_15761_tampa" target="_blank" rel="noopener" style="color:var(--red);">Booksy</a> for current availability.<br />
+            Walk-ins welcome when chairs are open.
+          </p>
+          <br />
+          <p><strong>📸 Instagram</strong><br />
+            <a href="https://www.instagram.com/heydaybarbershop/" target="_blank" rel="noopener" style="color:var(--red);">@heydaybarbershop</a>
+          </p>
+        </div>
+        <div class="location-map">
+          <iframe
+            title="Heyday Barbershop on Google Maps"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3523.7!2d-82.459!3d27.978!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88c2c3f0b0000001%3A0x1234567890abcdef!2s5115+N+Florida+Ave%2C+Tampa%2C+FL+33603!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
+            allowfullscreen
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── BOOK CTA ─── -->
+  <section id="book">
+    <div class="container">
+      <p class="section-label" style="color:var(--red-lt);">Ready?</p>
+      <h2 class="section-title">Book Your <span>Appointment</span></h2>
+      <div class="book-stars">
+        <span class="stars">★★★★★</span>
+        <span>5.0 stars · 651+ reviews</span>
+      </div>
+      <p>Skip the wait. Book online with Captain D or Meatloaf in seconds.</p>
+      <a class="btn btn-primary" href="https://booksy.com/en-us/1574076_heyday-barbershop_barber-shop_15761_tampa" target="_blank" rel="noopener">
+        Book on Booksy
+      </a>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ─── -->
+  <footer>
+    <div class="footer-links">
+      <a href="https://www.instagram.com/heydaybarbershop/" target="_blank" rel="noopener" class="footer-ig">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        @heydaybarbershop
+      </a>
+      <a href="https://booksy.com/en-us/1574076_heyday-barbershop_barber-shop_15761_tampa" target="_blank" rel="noopener">Book on Booksy</a>
+      <a href="https://maps.google.com/?q=5115+N+Florida+Ave+Tampa+FL+33603" target="_blank" rel="noopener">Get Directions</a>
+    </div>
+    <p>5115 N Florida Ave · Tampa, FL 33603 · Seminole Heights</p>
+    <p style="margin-top:0.5rem;">© 2025 Heyday Barbershop. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function toggleNav() {
+      document.getElementById('navLinks').classList.toggle('open');
+    }
+
+    // Close nav on link click (mobile)
+    document.querySelectorAll('#navLinks a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        document.getElementById('navLinks').classList.remove('open');
+      });
+    });
+
+    // Smooth nav bg on scroll
+    var nav = document.querySelector('nav');
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 40) {
+        nav.style.background = 'rgba(13,13,13,0.99)';
+      } else {
+        nav.style.background = 'rgba(13,13,13,0.96)';
+      }
+    });
+  </script>
+
+</body>
+</html>
