@@ -29,6 +29,8 @@
       --body:    'Inter', system-ui, sans-serif;
     }
 
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
+
     html { scroll-behavior: smooth; }
 
     body {
@@ -245,6 +247,22 @@
       z-index: 3;
     }
 
+    .hero-sign-logo-center {
+      display: block;
+      width: min(320px, 65vw);
+      height: auto;
+      margin: 0 auto 1rem;
+      filter: drop-shadow(0 4px 20px rgba(217,66,53,0.25));
+    }
+
+    .hero-address {
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-top: 0.3rem;
+    }
+
     /* Marquee light dots around the border */
     .hero-sign::before {
       content: '';
@@ -296,11 +314,12 @@
     }
 
     .hero-location {
-      font-size: 0.8rem;
+      font-family: var(--display);
+      font-size: 1.1rem;
       font-weight: 600;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.5);
+      color: var(--yellow);
       margin-bottom: 0;
     }
 
@@ -952,6 +971,7 @@
 
       .hero-sign { padding: 2rem 1.25rem 1.5rem; }
       .hero-sign-logo { width: 180px; top: -50px; left: -25px; }
+      .hero-sign-logo-center { width: min(240px, 60vw); }
 
       .hero-title { font-size: clamp(3.5rem, 16vw, 5.5rem); }
 
@@ -1076,15 +1096,13 @@
 
   <div class="hero-inner">
     <div class="hero-sign">
-      <img src="logo.png" alt="" class="hero-sign-logo" />
-      <p class="hero-eyebrow">Seminole Heights, Tampa FL</p>
-      <h1 class="hero-title">
-        <span class="red">HEYDAY</span><br />BARBERSHOP
-      </h1>
+      <h1 class="sr-only">Heyday Barbershop — Seminole Heights, Tampa FL</h1>
+      <img src="logo.png" alt="Heyday Barbershop" class="hero-sign-logo-center" />
       <div class="hero-divider" aria-hidden="true"></div>
-      <p class="hero-sub">Your neighborhood cut shop.</p>
+      <p class="hero-sub">Your favorite neighborhood barbershop.</p>
       <div class="hero-divider" aria-hidden="true"></div>
-      <p class="hero-location">5115 N Florida Ave &mdash; Tampa, FL 33603</p>
+      <p class="hero-location">Seminole Heights, Tampa FL</p>
+      <p class="hero-address">5115 N Florida Ave &mdash; Tampa, FL 33603</p>
     </div>
 
     <div class="hero-below">
